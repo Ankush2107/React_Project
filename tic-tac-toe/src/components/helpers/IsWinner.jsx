@@ -1,4 +1,4 @@
-function CheckWinner(board, symbol) {
+function IsWinner(board, symbol) {
 
     // In row
     if(board[0] == board[1] && board[1] == board[2] && board[2] == symbol) return symbol;
@@ -16,3 +16,5 @@ function CheckWinner(board, symbol) {
 
     return "";
 }
+
+export default IsWinner;
