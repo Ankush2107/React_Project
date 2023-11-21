@@ -1,4 +1,5 @@
 import Icon from "../Icon/Icon";
+import './Card.css';
 
 function Card({ player }) {
     let icon = <Icon />
@@ -9,7 +10,7 @@ function Card({ player }) {
         icon =  <Icon name="circle" />
 
     return (
-        <div className="Card">
+        <div className="card">
             {icon}
         </div>
     )    
