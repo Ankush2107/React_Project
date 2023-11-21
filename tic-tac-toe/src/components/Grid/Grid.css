@@ -10,3 +10,16 @@
 .turn-highlight {
     color: #ffffff;
 }
+
+.reset {
+    padding: 13px 15px;
+    background-color: rgba(128, 128, 128, 0.765);
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.reset:hover {
+    background-color: rgba(94, 94, 94, 0.687);
+}
