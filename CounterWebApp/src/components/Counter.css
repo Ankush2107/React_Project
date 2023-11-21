@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.counterApp {
+    height: 250px;
+    width: 330px;
+    background-color: rgb(255, 217, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12%;
+}
+.btn {
+    height: 50px;
+    padding: 2vw 3vw;
+}
+.btn button{
+    display: inline;
+    margin-left: 10px;
+    padding: 0.8vw 1.5vw;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+}
