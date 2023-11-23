@@ -5,8 +5,6 @@ import Pokemon from "../Pokemon/Pokemon";
 
 function PokemonList() {
 
-    setIsLoading(true);
-
     const [pokemonList, setPokemonList] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
 
@@ -17,21 +15,20 @@ function PokemonList() {
 
     async function downloadPokemons() {
 
+        setIsLoading(true);
+
         const response = await axios.get(pokedexUrl); // This downloads list of 20 pokemons
 
-        const pokemonResult = response.data.results; // We get thew array pokemon from results
+        const pokemonResult = response.data.results; // We get the array pokemon from results which is having name and Url properties
 
-        console.log(response.data);
         setNextUrl(response.data.next);
         setPrevUrl(response.data.previous);
         // Iterating over the array of pokemons, and using there url, to create an array of promises.
         // That will download those 20 pokemons.
         const pokemonResultPromise = pokemonResult.map((pokemon) => axios.get(pokemon.url))
 
-
         // passing that promise array to axios.all
-        const pokemonData = await axios.all(pokemonResultPromise) // array of 20pokemon detailted data
-
+        const pokemonData = await axios.all(pokemonResultPromise) // array of 20 pokemon detailted data
 
         // now iterate on the data of each pokemon, and extract id, name, image, type
         const pokeListResult = pokemonData.map((pokeData) => {
@@ -44,13 +41,11 @@ function PokemonList() {
             }
         })
         setPokemonList(pokeListResult)
-
         setIsLoading(false)
-        
     }
 
     useEffect(async() => {
-        downloadPokemons()
+        await downloadPokemons()
     }, [pokedexUrl]);
 
 
@@ -58,7 +53,7 @@ function PokemonList() {
         <div className="pokemon-list-wrapper">
             <div className="pokemon-wrapper">
                 {(isLoading) ? 'Loading...' : 
-                    pokemonList.map((p) => <Pokemon name={p.name} image={p.image} key={p.id} />)
+                    pokemonList.map((p) => <Pokemon name={p.name} image={p.image} key={p.id} id={p.id} />)
                 }
             </div>
             <div className="control">
